@@ -58,11 +58,11 @@ cnoreabbrev Qa qa
 cnoreabbrev Qall qall
 ]]
 
-vim.api.nvim_create_autocmd({ "LspAttach", "TextChanged", "InsertLeave" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
+--vim.api.nvim_create_autocmd({ "LspAttach", "TextChanged", "InsertLeave" }, {
+--  callback = function()
+--    require("lint").try_lint()
+--  end,
+--})
 
 vim.api.nvim_create_autocmd({ "LspAttach" }, {
   desc = "Disable semantic tokens for rustaceanvim as it fucks the colorscheme",
