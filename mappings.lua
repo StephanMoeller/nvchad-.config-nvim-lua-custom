@@ -15,19 +15,16 @@ M.general = {
     n = {
 
         -- [";"] = { ":", "enter cmdline", opts = { nowait = true } },
-
         ["J"] = { "mzJ`z", "Join line with cursor in place" },
         ["Q"] = { "<nop>" },
         ["<leader>s"] = { ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<left><left><left>", "Replace word under cursor" },
-        ["<leader>ex"] = { "<cmd>!chmod +x %<CR>", "Make current file executeable" },
-        ["<C-d>"] = { "<C-d>zz", "Keep cursor centered while scrolling" },
-        ["<C-u>"] = { "<C-u>zz", "Keep cursor centered while scrolling" },
 
         -- tmux navigation settings overwriting what nvchad overwrote from vim, going full circle here
-        ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
-        ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
-        ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
-        ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
+        ["<C-Left>"] = { "<cmd> TmuxNavigateLeft<CR>", "window left" },
+        ["<C-Right>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
+        ["<C-Down>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
+        ["<C-Up>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
+
         -- telescope bindings
         ["<leader>t"] = { "<cmd> Telescope builtin <CR>", "List telescope functions as fuzzy search" },
         ["<leader>ff"] = { "<cmd> Telescope find_files follow=true <CR>", "Find files" },
@@ -38,6 +35,7 @@ M.general = {
         ["<leader>u"] = { "<cmd> UndotreeToggle<CR>", "Undotree toggle" },
         ["<leader>gf"] = { "<cmd> Telescope git_files <CR>", "Find files tracked by git" },
 
+        -- git
         ["<leader>gs"] = { "<cmd> LazyGit<CR>", "Git status!" },
         ["<leader>gh"] = { "<cmd> 0Gclog<CR>", "Git file history!" },
         ["<leader>gvh"] = { "<cmd> 0Gclog<CR>", "Git file history!" },
@@ -96,36 +94,12 @@ M.general = {
             end,
             "Add file to harpoon",
         },
-        ["<leader>h"] = {
-            function()
-                require("harpoon").ui:toggle_quick_menu(require("harpoon"):list())
-            end,
-            "Toggle harpoon menu",
-        },
-        ["<leader>j"] = {
-            function()
-                require("harpoon"):list():select(1)
-            end,
-            "Go to harpoon mark 1",
-        },
-        ["<leader>k"] = {
-            function()
-                require("harpoon"):list():select(2)
-            end,
-            "Go to harpoon mark 2",
-        },
-        ["<leader>l"] = {
-            function()
-                require("harpoon"):list():select(3)
-            end,
-            "Go to harpoon mark 3",
-        },
-        ["<leader>;"] = {
-            function()
-                require("harpoon"):list():select(4)
-            end,
-            "Go to harpoon mark 4",
-        },
+        ["<leader>h"] = { function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, "Toggle harpoon menu", },
+        ["<leader>n"] = { function() require("harpoon"):list():select(1) end, "Go to harpoon mark 1", },
+        ["<leader>e"] = { function() require("harpoon"):list():select(2) end, "Go to harpoon mark 2", },
+        ["<leader>i"] = { function() require("harpoon"):list():select(3) end, "Go to harpoon mark 3", },
+        ["<leader>o"] = { function() require("harpoon"):list():select(4) end, "Go to harpoon mark 4", },
+
         -- Stephan
         ["<C-s>"] = { ":w<enter>", "Save current file" },
         ["<C-c>"] = { ":q<enter>", "Quit" },
@@ -137,6 +111,8 @@ M.general = {
         ["<leader>d"] = { '"_d', "Delete line to system clipboard" },
         ["<leader>p"] = { '"+p', "Insert from clipboard" },
         ["<c-p>"] = { '"0p', "Insert last yanked" },
+        ["<C-d>"] = { "<C-d>zz", "Keep cursor centered while scrolling" },
+        ["<C-u>"] = { "<C-u>zz", "Keep cursor centered while scrolling" },
     },
     v = {
         ["J"] = { ":m '>+1<CR>gv=gv", "Move selected lines down" },
@@ -167,45 +143,6 @@ M.general = {
         ["<C-H>"] = { "<C-w>", "Delete word backward with backspace which is odly mapped to h" },
     },
 }
--- bindings for python debugging
-M.dap = {
-    plugin = true,
-    n = {
-        ["<leader>db"] = { "<cmd> DapToggleBreakpoint <CR>" }, -- set breakpoint
-    },
-}
-M.dap_python = {
-    plugin = true,
-    n = {
-        ["<leader>dpr"] = { -- "debug python run"
-            function()
-                require("dap-python").test_method()
-            end,
-            '"Debug python run"',
-        },
-    },
-}
-
--- M.actions_preview = {
---     n = {
---        ["<leader>ca"] = {
---             function ()
---             require("actions-preview").code_actions()
---        end , "Code actions" },
---     }
--- }
-
--- M.telescope = {
---     i = {
---         ["<S-Down>"] = {
---                 require("telescope.actions").cycle_history_next
---         },
---         ["<S-Up>"] = {
---                 require("telescope.actions").cycle_history_prev
---         },
---     }
--- }
-
 M.trouble = {
     n = {
         ["<leader>ww"] = {
