@@ -53,22 +53,6 @@ M.general = {
         ["<leader>db"] = { "<cmd> DBUIToggle<CR>", "Toggle dadbod databse ui" },
         ["<leader>fi"] = { "ggVG=", "Reindent file" },
 
-        ["<leader>fml"] = {
-            function()
-                require("cellular-automaton").start_animation "make_it_rain"
-            end,
-        },
-
-        ["<leader>fu"] = {
-            function()
-                require("cellular-automaton").start_animation "scramble"
-            end,
-        },
-        ["<leader>fuu"] = {
-            function()
-                require("cellular-automaton").start_animation "game_of_life"
-            end,
-        },
         -- centered search
         ["n"] = { "nzz", "Centered jumps in search mode" },
         ["N"] = { "Nzz", "Centered jumps in search mode" },
@@ -94,6 +78,8 @@ M.general = {
             end,
             "Add file to harpoon",
         },
+
+        -- Harpoon
         ["<leader>h"] = { function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, "Toggle harpoon menu", },
         ["<leader>n"] = { function() require("harpoon"):list():select(1) end, "Go to harpoon mark 1", },
         ["<leader>e"] = { function() require("harpoon"):list():select(2) end, "Go to harpoon mark 2", },
